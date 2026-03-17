@@ -1,0 +1,120 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.twitch-status-panel {
+  @include sc2-panel($color-crystal-primary);
+  padding: $spacing-lg;
+  border-radius: $border-radius-md;
+  min-width: 200px;
+
+  &.status-connected {
+    border-color: $color-success;
+    box-shadow: 0 0 15px rgba($color-success, 0.3);
+  }
+
+  &.status-connecting {
+    .status-indicator {
+      animation: statusPulse 1s ease-in-out infinite;
+    }
+  }
+
+  &.status-error {
+    border-color: $color-accent-warning;
+    box-shadow: 0 0 15px rgba($color-accent-warning, 0.3);
+  }
+}
+
+.status-header {
+  @include flex-center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  .status-connected & {
+    background: $color-success;
+  }
+
+  .status-connecting & {
+    background: $color-accent-gold;
+  }
+
+  .status-disconnected & {
+    background: $color-text-secondary;
+  }
+
+  .status-error & {
+    background: $color-accent-warning;
+  }
+}
+
+.channel-name {
+  font-size: $font-size-lg;
+  font-weight: 600;
+  color: $color-text-primary;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-info {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.status-message {
+  margin: 0;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  line-height: 1.4;
+
+  &.error-msg {
+    color: $color-accent-warning;
+  }
+}
+
+.status-error {
+  @include flex-column-center;
+  gap: $spacing-md;
+}
+
+.btn-reconnect {
+  padding: $spacing-sm $spacing-lg;
+  background: linear-gradient(135deg, $color-crystal-primary 0%, $color-crystal-secondary 100%);
+  color: $color-dark-bg;
+  border: none;
+  border-radius: $border-radius-md;
+  font-size: $font-size-xs;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition-base;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba($color-crystal-primary, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}

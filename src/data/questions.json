@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "question": "Which race was introduced first in the original StarCraft?",
+    "answers": [
+      { "id": 1, "text": "Protoss" },
+      { "id": 2, "text": "Terran" },
+      { "id": 3, "text": "Zerg" },
+      { "id": 4, "text": "Xel'Naga" }
+    ],
+    "correctAnswerId": 2
+  },
+  {
+    "id": 2,
+    "question": "What is the capital of the Terran Dominion in StarCraft II?",
+    "answers": [
+      { "id": 1, "text": "Augustgrad" },
+      { "id": 2, "text": "Korhal City" },
+      { "id": 3, "text": "New Tarsonis" },
+      { "id": 4, "text": "Raynor's Hope" }
+    ],
+    "correctAnswerId": 1
+  },
+  {
+    "id": 3,
+    "question": "Which StarCraft II expansion features the Swarm Host unit?",
+    "answers": [
+      { "id": 1, "text": "Wings of Liberty" },
+      { "id": 2, "text": "Heart of the Swarm" },
+      { "id": 3, "text": "Legacy of the Void" },
+      { "id": 4, "text": "Starcraft: Remastered" }
+    ],
+    "correctAnswerId": 2
+  },
+  {
+    "id": 4,
+    "question": "What is the primary resource used to build structures in StarCraft?",
+    "answers": [
+      { "id": 1, "text": "Gas only" },
+      { "id": 2, "text": "Minerals only" },
+      { "id": 3, "text": "Minerals and Gas" },
+      { "id": 4, "text": "Crystal Fragments" }
+    ],
+    "correctAnswerId": 3
+  },
+  {
+    "id": 5,
+    "question": "Which hero unit can be trained by only the Terran faction?",
+    "answers": [
+      { "id": 1, "text": "Raynor's Raider" },
+      { "id": 2, "text": "Zeratul" },
+      { "id": 3, "text": "Jim Raynor" },
+      { "id": 4, "text": "Artanis" }
+    ],
+    "correctAnswerId": 3
+  },
+  {
+    "id": 6,
+    "question": "What is the name of the Zerg's primary hive structure?",
+    "answers": [
+      { "id": 1, "text": "Nexus" },
+      { "id": 2, "text": "Hive Cluster" },
+      { "id": 3, "text": "Barracks" },
+      { "id": 4, "text": "Command Center" }
+    ],
+    "correctAnswerId": 2
+  },
+  {
+    "id": 7,
+    "question": "Which Protoss building is required to research most unit upgrades?",
+    "answers": [
+      { "id": 1, "text": "Cybernetics Core" },
+      { "id": 2, "text": "Fleet Beacon" },
+      { "id": 3, "text": "Twilight Council" },
+      { "id": 4, "text": "Forge" }
+    ],
+    "correctAnswerId": 1
+  },
+  {
+    "id": 8,
+    "question": "What is the base walk speed of a Marine unit?",
+    "answers": [
+      { "id": 1, "text": "1.5" },
+      { "id": 2, "text": "2.36" },
+      { "id": 3, "text": "3.15" },
+      { "id": 4, "text": "4.0" }
+    ],
+    "correctAnswerId": 2
+  },
+  {
+    "id": 9,
+    "question": "How many supply is required for a Battlecruiser in Legacy of the Void?",
+    "answers": [
+      { "id": 1, "text": "6 supply" },
+      { "id": 2, "text": "8 supply" },
+      { "id": 3, "text": "10 supply" },
+      { "id": 4, "text": "12 supply" }
+    ],
+    "correctAnswerId": 2
+  },
+  {
+    "id": 10,
+    "question": "What year was the original StarCraft released?",
+    "answers": [
+      { "id": 1, "text": "1996" },
+      { "id": 2, "text": "1998" },
+      { "id": 3, "text": "2000" },
+      { "id": 4, "text": "2002" }
+    ],
+    "correctAnswerId": 2
+  }
+]

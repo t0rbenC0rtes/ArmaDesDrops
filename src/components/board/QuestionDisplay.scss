@@ -1,0 +1,72 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.question-display {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: $spacing-xl 0;
+  z-index: 10;
+}
+
+.question-card {
+  width: 90%;
+  max-width: 1200px;
+  @include sc2-panel($color-crystal-primary);
+  padding: $spacing-2xl;
+  text-align: center;
+  border-radius: $border-radius-lg;
+  animation: slideDown 0.4s ease-out;
+
+  @include respond-to('md') {
+    padding: $spacing-xl;
+    max-width: 95%;
+  }
+}
+
+.question-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: $spacing-lg;
+}
+
+.question-number {
+  font-size: $font-size-sm;
+  color: $color-accent-gold;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.question-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-text {
+  font-size: $font-size-3xl;
+  color: $color-text-primary;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+
+  @include respond-to('md') {
+    font-size: $font-size-2xl;
+  }
+
+  @include respond-to('sm') {
+    font-size: $font-size-xl;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

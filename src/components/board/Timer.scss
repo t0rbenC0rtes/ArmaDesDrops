@@ -1,0 +1,149 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.timer {
+  position: fixed;
+  bottom: $spacing-lg;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+
+.timer-circle {
+  position: relative;
+  width: 120px;
+  height: 120px;
+
+  @include respond-to('md') {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.timer-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.timer-bg {
+  fill: none;
+  stroke: rgba($color-crystal-primary, 0.2);
+  stroke-width: 2;
+}
+
+.timer-progress {
+  fill: none;
+  stroke: $color-success;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 282.7;
+  stroke-dashoffset: 282.7;
+  transition: stroke-dashoffset 1s linear, stroke 0.3s ease-out;
+}
+
+.timer {
+  &.timer--warning {
+    .timer-progress {
+      stroke: $color-accent-gold;
+      animation: warningPulse 1s ease-in-out infinite;
+    }
+  }
+
+  &.timer--critical {
+    .timer-progress {
+      stroke: $color-accent-warning;
+      animation: criticalPulse 0.5s ease-in-out infinite;
+    }
+  }
+}
+
+.timer-content {
+  @include absolute-center;
+  @include flex-column-center;
+  gap: $spacing-xs;
+}
+
+.timer-value {
+  font-size: $font-size-2xl;
+  font-weight: bold;
+  color: $color-text-primary;
+  font-family: 'Courier New', monospace;
+  line-height: 1;
+}
+
+.timer-unit {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  text-transform: uppercase;
+}
+
+.pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid $color-accent-gold;
+  border-radius: 50%;
+  pointer-events: none;
+
+  &.pulse-ring-critical {
+    border-color: $color-accent-warning;
+    animation: pulseRingCritical 0.5s ease-out infinite;
+  }
+
+  &.pulse-ring-1 {
+    width: 140px;
+    height: 140px;
+    animation: pulseRing 1s ease-out infinite;
+  }
+
+  &.pulse-ring-2 {
+    width: 160px;
+    height: 160px;
+    animation: pulseRing 1s ease-out 0.3s infinite;
+  }
+}
+
+// Animations
+@keyframes warningPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes criticalPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes pulseRing {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}
+
+@keyframes pulseRingCritical {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}

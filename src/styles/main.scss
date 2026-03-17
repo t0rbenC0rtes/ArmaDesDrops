@@ -1,0 +1,31 @@
+@import './variables';
+@import './mixins';
+@import './reset';
+
+// Global Styles
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+// OBS Browser Source Dimensions
+@media (min-width: $obs-width) {
+  #root {
+    width: $obs-width;
+    height: $obs-height;
+  }
+}

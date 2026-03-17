@@ -1,0 +1,56 @@
+// SC2-inspired Color Palette
+$color-dark-bg: #0a0e27;
+$color-panel-bg: #1a1f3a;
+$color-border: #2a3f5f;
+$color-crystal-primary: #00d4ff;
+$color-crystal-secondary: #00a8cc;
+$color-accent-gold: #ffd700;
+$color-accent-warning: #ff6b6b;
+$color-text-primary: #ffffff;
+$color-text-secondary: #b0b8c8;
+$color-success: #00ff88;
+$color-error: #ff4444;
+
+// Spacing Scale
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+$spacing-3xl: 4rem;
+
+// Font Sizes
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-2xl: 2rem;
+$font-size-3xl: 2.5rem;
+$font-size-4xl: 3rem;
+
+// Font Family
+$font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+$font-mono: 'Courier New', monospace;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// OBS Browser Source Dimensions
+$obs-width: 1920px;
+$obs-height: 1080px;
+
+// Border Radius
+$border-radius-sm: 0.25rem;
+$border-radius-md: 0.5rem;
+$border-radius-lg: 1rem;
+
+// Transitions
+$transition-fast: 150ms ease-in-out;
+$transition-base: 300ms ease-in-out;
+$transition-slow: 500ms ease-in-out;

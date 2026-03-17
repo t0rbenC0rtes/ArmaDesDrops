@@ -1,0 +1,288 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.game-board {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: $color-dark-bg;
+  display: flex;
+  flex-direction: column;
+
+  // OBS overlay - ensure exact dimensions
+  @media (min-width: $obs-width) {
+    width: $obs-width;
+    height: $obs-height;
+    overflow: hidden;
+  }
+}
+
+.game-board-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/board.jpg') center/cover no-repeat;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.board-top {
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.board-center {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl;
+
+  @include respond-to('md') {
+    padding: $spacing-lg;
+  }
+
+  @include respond-to('sm') {
+    padding: $spacing-md;
+  }
+}
+
+.trap-grid {
+  display: grid;
+  gap: $spacing-2xl;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+
+  @include respond-to('md') {
+    gap: $spacing-xl;
+    max-width: 100%;
+  }
+
+  @include respond-to('sm') {
+    gap: $spacing-lg;
+  }
+
+  // Normal 2x2 grid for questions 1-9
+  &.trap-grid--normal {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    @include respond-to('sm') {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+  }
+
+  // 1x2 grid for final question
+  &.trap-grid--final {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+
+    @include respond-to('sm') {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.board-bottom {
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+  padding: $spacing-xl 0;
+  display: flex;
+  justify-content: center;
+}
+
+// Debug Phase Indicator
+.phase-indicator {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background: rgba($color-panel-bg, 0.9);
+  border: 1px solid $color-border;
+  padding: $spacing-md $spacing-lg;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  z-index: 100;
+  font-family: monospace;
+
+  strong {
+    color: $color-accent-gold;
+    margin-left: $spacing-sm;
+  }
+}
+
+// Test Controls
+.test-controls {
+  position: fixed;
+  bottom: 60px;
+  right: 10px;
+  background: rgba($color-panel-bg, 0.95);
+  border: 2px solid $color-crystal-primary;
+  border-radius: $border-radius-md;
+  padding: $spacing-lg;
+  z-index: 99;
+  max-width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba($color-crystal-primary, 0.3);
+
+  h3 {
+    margin-top: 0;
+    color: $color-accent-gold;
+    font-size: $font-size-lg;
+  }
+
+  h4 {
+    margin: $spacing-md 0 $spacing-sm;
+    color: $color-crystal-primary;
+    font-size: $font-size-base;
+  }
+
+  p {
+    margin: $spacing-sm 0;
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    font-family: monospace;
+  }
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.vote-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-sm;
+}
+
+.vote-stats {
+  border-top: 1px solid $color-border;
+  padding-top: $spacing-md;
+  margin-top: $spacing-md;
+}
+
+// Twitch Status Display
+.twitch-status {
+  @include flex-center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: rgba($color-crystal-primary, 0.1);
+  border: 1px solid $color-crystal-primary;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: statusPulse 2s ease-in-out infinite;
+
+  &.status-connected {
+    background: $color-success;
+  }
+
+  &.status-connecting {
+    background: $color-accent-gold;
+  }
+
+  &.status-disconnected {
+    background: $color-text-secondary;
+    animation: none;
+  }
+
+  &.status-error {
+    background: $color-accent-warning;
+  }
+}
+
+.status-text {
+  strong {
+    color: $color-crystal-primary;
+  }
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Button Styles
+.btn {
+  padding: $spacing-md $spacing-lg;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition-base;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &.btn-primary {
+    background: linear-gradient(135deg, $color-crystal-primary 0%, $color-crystal-secondary 100%);
+    color: $color-dark-bg;
+  }
+
+  &.btn-secondary {
+    background: linear-gradient(135deg, $color-accent-gold 0%, #ffed4e 100%);
+    color: $color-dark-bg;
+  }
+
+  &.btn-small {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-xs;
+  }
+}
+
+.loading {
+  font-size: $font-size-xl;
+  color: $color-text-secondary;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .game-board {
+    min-height: 100vh;
+  }
+
+  .board-center {
+    flex: 1;
+    padding: $spacing-lg;
+  }
+}
