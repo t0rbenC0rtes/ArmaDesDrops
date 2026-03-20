@@ -70,10 +70,18 @@ export function AdminDashboard() {
     if (amount > 0) {
       dispatch({
         type: 'ADD_DONATION',
-        payload: { amount },
+        payload: amount,
       })
       setDonationInput('')
     }
+  }
+
+  // Quick donation handler
+  const handleQuickDonation = (amount) => {
+    dispatch({
+      type: 'ADD_DONATION',
+      payload: amount,
+    })
   }
 
   // Manual vote injection for testing
@@ -340,12 +348,23 @@ export function AdminDashboard() {
                   min="1"
                   value={donationInput}
                   onChange={(e) => setDonationInput(e.target.value)}
-                  placeholder="Montant en euros"
+                  placeholder="Montant en €"
                   className="input"
                 />
                 <button className="btn btn-primary" onClick={handleAddDonation}>
                   Ajouter
                 </button>
+              </div>
+              <div className="button-row">
+                {[2, 5, 10, 25, 50].map((amount) => (
+                  <button
+                    key={amount}
+                    className="btn btn-small"
+                    onClick={() => handleQuickDonation(amount)}
+                  >
+                    +€{amount}
+                  </button>
+                ))}
               </div>
             </div>
 
