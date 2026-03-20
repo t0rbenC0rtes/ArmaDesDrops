@@ -319,6 +319,13 @@ const gameReducer = (state, action) => {
       }
     }
 
+    case 'SET_CRYSTAL_BANK': {
+      return {
+        ...state,
+        crystalBank: action.payload,
+      }
+    }
+
     default:
       return state
   }

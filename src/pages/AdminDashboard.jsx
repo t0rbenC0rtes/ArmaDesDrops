@@ -11,6 +11,7 @@ export function AdminDashboard() {
   const [manualVoteCount, setManualVoteCount] = useState(1)
   const [eliminateModalOpen, setEliminateModalOpen] = useState(false)
   const [skipModalOpen, setSkipModalOpen] = useState(false)
+  const [crystalOverrideInput, setCrystalOverrideInput] = useState('')
 
   const currentQuestion = questionsData[state.currentQuestionIndex] || questionsData[0]
 
@@ -82,6 +83,19 @@ export function AdminDashboard() {
       type: 'ADD_DONATION',
       payload: amount,
     })
+  }
+
+  // Emergency crystal bank override
+  const handleOverrideCrystals = () => {
+    const amount = parseInt(crystalOverrideInput)
+    if (!isNaN(amount) && amount >= 0) {
+      dispatch({
+        type: 'SET_CRYSTAL_BANK',
+        payload: amount,
+      })
+      setCrystalOverrideInput('')
+      console.log(`[EMERGENCY] Crystal bank overridden to ${amount}`)
+    }
   }
 
   // Manual vote injection for testing
@@ -400,16 +414,31 @@ export function AdminDashboard() {
             {/* Emergency Reset */}
             <div className="manual-control-group emergency">
               <h3>BOUTON D'URGENCE</h3>
-              <button
-                className="btn btn-danger"
-                onClick={() => {
-                  if (window.confirm('Reset entire game? This cannot be undone.')) {
-                    gameFlow.resetGame()
-                  }
-                }}
-              >
-                🔴 Reset TOUT LE JEU
-              </button>
+              <div className="button-row">
+                <button
+                  className="btn btn-danger"
+                  onClick={() => {
+                    if (window.confirm('Reset entire game? This cannot be undone.')) {
+                      gameFlow.resetGame()
+                    }
+                  }}
+                >
+                  🔴 Reset TOUT LE JEU
+                </button>
+              </div>
+              <div className="input-group">
+                <input
+                  type="number"
+                  min="0"
+                  value={crystalOverrideInput}
+                  onChange={(e) => setCrystalOverrideInput(e.target.value)}
+                  placeholder="Montant de cristaux"
+                  className="input"
+                />
+                <button className="btn btn-warning" onClick={handleOverrideCrystals}>
+                  Forcer les Cristaux
+                </button>
+              </div>
             </div>
           </section>
         </main>
