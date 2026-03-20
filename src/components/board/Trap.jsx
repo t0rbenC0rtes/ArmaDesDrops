@@ -11,14 +11,15 @@ export function Trap({
   isHighlighted,
   onClick,
   isClickable = false,
+  crystalPerVote = 0, // Calculated value per vote during voting
 }) {
   const trapClasses = [
     'trap',
     isEliminated && 'trap--eliminated',
-    revealState === 'cracking' && 'trap--cracking',
     revealState === 'done' && 'trap--done',
     isCorrect && revealState === 'done' && 'trap--correct',
     !isCorrect && revealState === 'done' && 'trap--incorrect',
+    !isCorrect && revealState === 'done' && 'trap--trapdoor',
     isHighlighted && 'trap--highlighted',
     isClickable && !isEliminated && 'trap--clickable',
   ]
@@ -31,13 +32,21 @@ export function Trap({
     }
   }
 
+  // Calculate crystal value for this answer's votes during voting phase
+  const votesCrystalValue = voteCount > 0 ? Math.floor(voteCount * crystalPerVote) : 0
+
   return (
     <div className={trapClasses} onClick={handleClick}>
       <div className="trap-inner">
         <div className="trap-answer">
           <span className="answer-label">{String.fromCharCode(64 + answerId)}</span>
           <p className="answer-text">{answerText}</p>
-          {voteCount > 0 && <span className="vote-count">votes: {voteCount}</span>}
+          {voteCount > 0 && (
+            <span className="vote-count">
+              votes: {voteCount}
+              {crystalPerVote > 0 && ` (${votesCrystalValue.toLocaleString()}💎)`}
+            </span>
+          )}
         </div>
 
         {crystalAmount > 0 && !isEliminated && (
@@ -47,7 +56,6 @@ export function Trap({
           </div>
         )}
 
-        {revealState === 'cracking' && <div className="trap-crack" />}
         {revealState === 'done' && isCorrect && <div className="correct-indicator" />}
         {revealState === 'done' && !isCorrect && isCorrect !== null && (
           <div className="incorrect-indicator" />
@@ -55,6 +63,9 @@ export function Trap({
       </div>
 
       {isEliminated && <div className="eliminated-overlay" />}
+
+      {/* Trapdoor void effect for wrong answers during reveal */}
+      {revealState === 'done' && !isCorrect && <div className="trapdoor-void" />}
     </div>
   )
 }

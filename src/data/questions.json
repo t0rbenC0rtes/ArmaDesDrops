@@ -103,9 +103,7 @@
     "question": "What year was the original StarCraft released?",
     "answers": [
       { "id": 1, "text": "1996" },
-      { "id": 2, "text": "1998" },
-      { "id": 3, "text": "2000" },
-      { "id": 4, "text": "2002" }
+      { "id": 2, "text": "1998" }
     ],
     "correctAnswerId": 2
   }

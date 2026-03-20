@@ -65,6 +65,10 @@ export function GameBoard() {
   // Determine grid layout - 2x2 for normal, 1x2 for final
   const gridClass = isFinal ? 'trap-grid--final' : 'trap-grid--normal'
 
+  // Calculate crystal value per vote during voting phase for real-time display
+  const totalVotes = Object.values(state.votes).reduce((sum, votes) => sum + votes.length, 0)
+  const crystalPerVote = totalVotes > 0 ? Math.floor(state.crystalBank / totalVotes) : 0
+
   return (
     <div className="game-board">
       {/* Background */}
@@ -96,6 +100,7 @@ export function GameBoard() {
                 revealState={state.revealState}
                 onClick={handleTrapClick}
                 isClickable={state.phase === 'voting'}
+                crystalPerVote={state.phase === 'voting' ? crystalPerVote : 0}
               />
             ))}
           </div>
