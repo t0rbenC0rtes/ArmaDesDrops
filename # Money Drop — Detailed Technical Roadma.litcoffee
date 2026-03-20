@@ -374,6 +374,7 @@ useTimer({ duration, onTick, onComplete, autoStart })
 #### Joker Controls
 - Each joker shown as a card with its threshold, description, triggered state
 - **Manual trigger** button for each joker (bypasses donation check — for streamer override)
+- JOKERS CAN ONLY BE USED ONCE PER QUESTION (reset on new question)
 - Jokers:
   - €2 — Save 5,000 crystals
   - €5 — Eliminate one wrong answer (admin selects which one via dropdown)

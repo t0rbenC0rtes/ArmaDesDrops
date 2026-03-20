@@ -9,6 +9,8 @@ export function AdminDashboard() {
   const gameFlow = useGameFlow()
   const [donationInput, setDonationInput] = useState('')
   const [manualVoteCount, setManualVoteCount] = useState(1)
+  const [eliminateModalOpen, setEliminateModalOpen] = useState(false)
+  const [skipModalOpen, setSkipModalOpen] = useState(false)
 
   const currentQuestion = questionsData[state.currentQuestionIndex] || questionsData[0]
 
@@ -19,32 +21,47 @@ export function AdminDashboard() {
   const handleJokerTrigger = (jokerId) => {
     switch (jokerId) {
       case '2':
+        // €2 Save: Save 5,000 crystals to bank
         gameFlow.triggerSaveCrystalsJoker()
+        console.log('[Joker €2] Save triggered - 5,000 crystals saved to bank')
         break
       case '5':
-        // For €5 joker, we need to dispatch directly since it requires an answerId
-        // For now, eliminate answer 1 (can be changed dynamically later)
-        dispatch({
-          type: 'ELIMINATE_ANSWER',
-          payload: 1,
-        })
-        dispatch({
-          type: 'UPDATE_JOKER_TRIGGERED',
-          payload: '5',
-        })
+        // €5 Eliminate: Open modal to select which answer to eliminate
+        setEliminateModalOpen(true)
         break
       case '10':
+        // €10 Re-vote: Reset votes, reopen voting with 45s timer
         gameFlow.triggerRevoteJoker()
+        console.log('[Joker €10] Re-vote triggered - votes reset, timer restarted')
         break
       case '25':
-        gameFlow.triggerSpecialJoker()
+        // €25 TBD: Placeholder - do nothing
+        console.log('[Joker €25] TBD - placeholder')
         break
       case '50':
-        gameFlow.skipQuestion()
+        // €50 Skip: Open modal for confirmation
+        setSkipModalOpen(true)
         break
       default:
         break
     }
+  }
+
+  // Handle eliminate answer selection
+  const handleEliminateAnswer = (answerId) => {
+    dispatch({
+      type: 'ELIMINATE_ANSWER',
+      payload: answerId,
+    })
+    setEliminateModalOpen(false)
+    console.log(`[Joker €5] Answer ${answerId} eliminated`)
+  }
+
+  // Handle skip question confirmation
+  const handleConfirmSkip = () => {
+    gameFlow.skipQuestion()
+    setSkipModalOpen(false)
+    console.log('[Joker €50] Question skipped - crystals banked')
   }
 
   // Manual donation handler
@@ -255,13 +272,13 @@ export function AdminDashboard() {
             <h2>🃏 Joker Controls</h2>
             <div className="joker-grid">
               <button
-                className={`joker-btn joker-50-50 ${!isJokerAvailable('2') ? 'used' : ''}`}
+                className={`joker-btn joker-save ${!isJokerAvailable('2') ? 'used' : ''}`}
                 onClick={() => handleJokerTrigger('2')}
                 disabled={!isJokerAvailable('2') || state.phase !== 'jokers'}
-                title="Remove 2 wrong answers"
+                title="Save 5,000 crystals to bank"
               >
-                <span className="joker-icon">50/50</span>
-                <span className="joker-name">Fifty-Fifty</span>
+                <span className="joker-icon">💾</span>
+                <span className="joker-name">Save</span>
                 <span className="joker-cost">€2</span>
               </button>
 
@@ -269,7 +286,7 @@ export function AdminDashboard() {
                 className={`joker-btn joker-eliminate ${!isJokerAvailable('5') ? 'used' : ''}`}
                 onClick={() => handleJokerTrigger('5')}
                 disabled={!isJokerAvailable('5') || state.phase !== 'jokers'}
-                title="Eliminate 1 incorrect answer"
+                title="Eliminate one wrong answer"
               >
                 <span className="joker-icon">✕</span>
                 <span className="joker-name">Eliminate</span>
@@ -277,35 +294,34 @@ export function AdminDashboard() {
               </button>
 
               <button
-                className={`joker-btn joker-phone ${!isJokerAvailable('10') ? 'used' : ''}`}
+                className={`joker-btn joker-revote ${!isJokerAvailable('10') ? 'used' : ''}`}
                 onClick={() => handleJokerTrigger('10')}
                 disabled={!isJokerAvailable('10') || state.phase !== 'jokers'}
-                title="Pause voting, get expert suggestion"
+                title="Reset votes, reopen voting with 45 seconds"
               >
-                <span className="joker-icon">☎</span>
-                <span className="joker-name">Phone a Friend</span>
+                <span className="joker-icon">🔄</span>
+                <span className="joker-name">Re-Vote</span>
                 <span className="joker-cost">€10</span>
               </button>
 
               <button
-                className={`joker-btn joker-audience ${!isJokerAvailable('25') ? 'used' : ''}`}
-                onClick={() => handleJokerTrigger('25')}
-                disabled={!isJokerAvailable('25') || state.phase !== 'jokers'}
-                title="Lock in audience voting preference"
+                className={`joker-btn joker-placeholder ${!isJokerAvailable('25') ? 'used' : ''}`}
+                disabled={true}
+                title="TBD - Placeholder"
               >
-                <span className="joker-icon">👥</span>
-                <span className="joker-name">Audience Help</span>
+                <span className="joker-icon">❓</span>
+                <span className="joker-name">TBD</span>
                 <span className="joker-cost">€25</span>
               </button>
 
               <button
-                className={`joker-btn joker-save ${!isJokerAvailable('50') ? 'used' : ''}`}
+                className={`joker-btn joker-skip ${!isJokerAvailable('50') ? 'used' : ''}`}
                 onClick={() => handleJokerTrigger('50')}
                 disabled={!isJokerAvailable('50') || state.phase !== 'jokers'}
-                title="Bank crystals safely"
+                title="Skip to next question, keep full bank"
               >
-                <span className="joker-icon">🏦</span>
-                <span className="joker-name">Save</span>
+                <span className="joker-icon">⏭️</span>
+                <span className="joker-name">Skip</span>
                 <span className="joker-cost">€50</span>
               </button>
             </div>
@@ -379,6 +395,72 @@ export function AdminDashboard() {
           </section>
         </main>
       </div>
+
+      {/* Eliminate Answer Modal */}
+      {eliminateModalOpen && (
+        <div className="modal-overlay" onClick={() => setEliminateModalOpen(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h2>€5 Eliminate - Choose Answer to Eliminate</h2>
+            <p className="modal-subtitle">Select a wrong answer to eliminate from the board</p>
+            <div className="modal-buttons">
+              {currentQuestion?.answers?.map((answer) => (
+                <button
+                  key={answer.id}
+                  className="btn btn-lg"
+                  onClick={() => handleEliminateAnswer(answer.id)}
+                  disabled={
+                    answer.id === currentQuestion.correctAnswerId ||
+                    state.eliminatedAnswers.includes(answer.id)
+                  }
+                  title={
+                    answer.id === currentQuestion.correctAnswerId
+                      ? 'Cannot eliminate correct answer'
+                      : state.eliminatedAnswers.includes(answer.id)
+                        ? 'Already eliminated'
+                        : 'Click to eliminate'
+                  }
+                >
+                  <span className="answer-label">
+                    {String.fromCharCode(64 + answer.id)}
+                  </span>
+                  <span>{answer.text}</span>
+                </button>
+              ))}
+            </div>
+            <button
+              className="btn btn-secondary"
+              onClick={() => setEliminateModalOpen(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Skip Question Confirmation Modal */}
+      {skipModalOpen && (
+        <div className="modal-overlay" onClick={() => setSkipModalOpen(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h2>€50 Skip Question</h2>
+            <p className="modal-subtitle">Skip to next question?</p>
+            <p className="modal-detail">
+              Bank all crystals: <strong>💎 {state.crystalBank.toLocaleString()}</strong>
+            </p>
+            <div className="modal-buttons">
+              <button className="btn btn-primary btn-lg" onClick={handleConfirmSkip}>
+                ✓ Confirm Skip
+              </button>
+              <button
+                className="btn btn-secondary btn-lg"
+                onClick={() => setSkipModalOpen(false)}
+              >
+                ✕ Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
+

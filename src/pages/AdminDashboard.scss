@@ -523,3 +523,82 @@ $color-accent-green: $color-success;
     min-width: auto;
   }
 }
+
+// Modal Overlay
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, rgba(15, 30, 80, 0.95), rgba(10, 14, 39, 0.95));
+  border: 3px solid $color-accent-cyan;
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 0 40px rgba(0, 200, 255, 0.4);
+
+  h2 {
+    margin: 0 0 0.5rem 0;
+    color: $color-accent-cyan;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .modal-subtitle {
+    margin: 0 0 1.5rem 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+  }
+
+  .modal-detail {
+    margin: 0 0 1.5rem 0;
+    color: $color-accent-gold;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1rem;
+
+      .answer-label {
+        background: $color-accent-cyan;
+        color: #0a0e27;
+        font-weight: bold;
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        min-width: 30px;
+        text-align: center;
+      }
+
+      &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
