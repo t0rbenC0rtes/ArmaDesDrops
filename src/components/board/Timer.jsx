@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import './Timer.scss'
 
 export function Timer({ duration = 45, isRunning = false, onComplete }) {
   const [secondsLeft, setSecondsLeft] = useState(duration)
+  const audioRef = useRef(null)
+  const musicStartedRef = useRef(false)
 
+  // Handle countdown interval
   useEffect(() => {
     if (!isRunning) return
 
@@ -21,9 +24,38 @@ export function Timer({ duration = 45, isRunning = false, onComplete }) {
     return () => clearInterval(interval)
   }, [isRunning, onComplete])
 
+  // Reset when duration changes
   useEffect(() => {
     setSecondsLeft(duration)
+    musicStartedRef.current = false
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current.currentTime = 0
+    }
   }, [duration])
+
+  // Sync music: Start music when timer reaches 23 seconds
+  // This way the 22-second climax happens when timer hits 0
+  useEffect(() => {
+    if (!audioRef.current) return
+
+    if (isRunning && secondsLeft === 23 && !musicStartedRef.current) {
+      // Start music when 23 seconds remain
+      audioRef.current.currentTime = 0
+      audioRef.current.play().catch((err) => {
+        console.warn('[Timer] Could not autoplay music:', err)
+      })
+      musicStartedRef.current = true
+      console.log('[Timer] Music started at timer=23s (21 seconds until climax)')
+    }
+
+    if (!isRunning && audioRef.current) {
+      // Stop music if timer stops
+      audioRef.current.pause()
+      audioRef.current.currentTime = 0
+      musicStartedRef.current = false
+    }
+  }, [isRunning, secondsLeft])
 
   const percentage = (secondsLeft / duration) * 100
   const isLow = secondsLeft <= 15
@@ -35,6 +67,17 @@ export function Timer({ duration = 45, isRunning = false, onComplete }) {
 
   return (
     <div className={timerClass}>
+      {/* Hidden audio element for timer climax */}
+      <audio
+        ref={audioRef}
+        src="/TimerMusic.wav"
+        preload="auto"
+        onEnded={() => {
+          console.log('[Timer] Music ended')
+          musicStartedRef.current = false
+        }}
+      />
+
       <div className="timer-circle">
         <svg className="timer-svg" viewBox="0 0 100 100">
           <circle className="timer-bg" cx="50" cy="50" r="45" />

@@ -467,7 +467,7 @@ useEffect(() => {
 
 1. Admin clicks **"Trigger Reveal"** on dashboard → `phase` sets to `"reveal"`
 2. Music starts: [reveal track](https://www.youtube.com/watch?v=I8DaUb_u7OQ) — note: use `useAudio` hook
-3. At **36 seconds** into the music, wrong answer traps begin cracking
+3. At **22 seconds** into the music, wrong answer traps begin cracking
 4. Crack animation plays on each wrong trap that has crystals on it
 5. Crystals on wrong traps "evaporate" (particle or float-up animation)
 6. After animation completes, evaluate outcome:
