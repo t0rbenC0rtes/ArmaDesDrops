@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "question": "Which race was introduced first in the original StarCraft?",
+    "question": "Quelle race a été introduite en première dans le StarCraft original ?",
     "answers": [
       { "id": 1, "text": "Protoss" },
       { "id": 2, "text": "Terran" },
@@ -12,7 +12,7 @@
   },
   {
     "id": 2,
-    "question": "What is the capital of the Terran Dominion in StarCraft II?",
+    "question": "Quelle est la capitale du Dominion Terran dans StarCraft II ?",
     "answers": [
       { "id": 1, "text": "Augustgrad" },
       { "id": 2, "text": "Korhal City" },
@@ -23,7 +23,7 @@
   },
   {
     "id": 3,
-    "question": "Which StarCraft II expansion features the Swarm Host unit?",
+    "question": "Quelle extension de StarCraft II présente l'unité Swarm Host ?",
     "answers": [
       { "id": 1, "text": "Wings of Liberty" },
       { "id": 2, "text": "Heart of the Swarm" },
@@ -34,18 +34,18 @@
   },
   {
     "id": 4,
-    "question": "What is the primary resource used to build structures in StarCraft?",
+    "question": "Quelle est la ressource principale utilisée pour construire des structures dans StarCraft ?",
     "answers": [
-      { "id": 1, "text": "Gas only" },
-      { "id": 2, "text": "Minerals only" },
-      { "id": 3, "text": "Minerals and Gas" },
-      { "id": 4, "text": "Crystal Fragments" }
+      { "id": 1, "text": "Gaz uniquement" },
+      { "id": 2, "text": "Minéraux uniquement" },
+      { "id": 3, "text": "Minéraux et Gaz" },
+      { "id": 4, "text": "Fragments de cristal" }
     ],
     "correctAnswerId": 3
   },
   {
     "id": 5,
-    "question": "Which hero unit can be trained by only the Terran faction?",
+    "question": "Quelle unité héros ne peut être entraînée que par la faction Terran ?",
     "answers": [
       { "id": 1, "text": "Raynor's Raider" },
       { "id": 2, "text": "Zeratul" },
@@ -56,7 +56,7 @@
   },
   {
     "id": 6,
-    "question": "What is the name of the Zerg's primary hive structure?",
+    "question": "Quel est le nom de la structure ruche principale des Zerg ?",
     "answers": [
       { "id": 1, "text": "Nexus" },
       { "id": 2, "text": "Hive Cluster" },
@@ -67,7 +67,7 @@
   },
   {
     "id": 7,
-    "question": "Which Protoss building is required to research most unit upgrades?",
+    "question": "Quel bâtiment Protoss est requis pour rechercher la plupart des mises à niveau d'unités ?",
     "answers": [
       { "id": 1, "text": "Cybernetics Core" },
       { "id": 2, "text": "Fleet Beacon" },
@@ -78,7 +78,7 @@
   },
   {
     "id": 8,
-    "question": "What is the base walk speed of a Marine unit?",
+    "question": "Quelle est la vitesse de marche de base d'une unité Marine ?",
     "answers": [
       { "id": 1, "text": "1.5" },
       { "id": 2, "text": "2.36" },
@@ -89,18 +89,18 @@
   },
   {
     "id": 9,
-    "question": "How many supply is required for a Battlecruiser in Legacy of the Void?",
+    "question": "Combien de supplies sont nécessaires pour un Battlecruiser dans Legacy of the Void ?",
     "answers": [
-      { "id": 1, "text": "6 supply" },
-      { "id": 2, "text": "8 supply" },
-      { "id": 3, "text": "10 supply" },
-      { "id": 4, "text": "12 supply" }
+      { "id": 1, "text": "6 supplies" },
+      { "id": 2, "text": "8 supplies" },
+      { "id": 3, "text": "10 supplies" },
+      { "id": 4, "text": "12 supplies" }
     ],
     "correctAnswerId": 2
   },
   {
     "id": 10,
-    "question": "What year was the original StarCraft released?",
+    "question": "En quelle année le StarCraft original a-t-il été lancé ?",
     "answers": [
       { "id": 1, "text": "1996" },
       { "id": 2, "text": "1998" }

@@ -94,8 +94,8 @@ export function AdminDashboard() {
       {/* Header */}
       <header className="admin-header">
         <div className="header-content">
-          <h1>💎 Admin Control Panel</h1>
-          <span className="channel-name">Channel: laemso</span>
+          <h1>💎 Panneau de Contrôle Admin</h1>
+          <span className="channel-name">Chaîne: laemso</span>
         </div>
       </header>
 
@@ -104,7 +104,7 @@ export function AdminDashboard() {
         {/* Left Sidebar - Game State */}
         <aside className="admin-sidebar">
           <div className="sidebar-panel">
-            <h3>Current Question</h3>
+            <h3>Question Actuelle</h3>
             {state.questions.length > 0 && (
               <>
                 <p className="question-number">Q{state.currentQuestionIndex + 1} / 10</p>
@@ -125,21 +125,21 @@ export function AdminDashboard() {
           </div>
 
           <div className="sidebar-panel stats-panel">
-            <h3>Game Stats</h3>
+            <h3>Statistiques du Jeu</h3>
             <div className="stat">
               <span className="stat-label">Phase:</span>
               <span className="stat-value">{state.phase.toUpperCase()}</span>
             </div>
             <div className="stat">
-              <span className="stat-label">Crystal Bank:</span>
+              <span className="stat-label">Banque de Cristaux:</span>
               <span className="stat-value">💎 {state.crystalBank.toLocaleString()}</span>
             </div>
             <div className="stat">
-              <span className="stat-label">Saved Crystals:</span>
+              <span className="stat-label">Cristaux Sauvegardés:</span>
               <span className="stat-value">💎 {state.savedCrystals.toLocaleString()}</span>
             </div>
             <div className="stat">
-              <span className="stat-label">Total Votes:</span>
+              <span className="stat-label">Votes Totaux:</span>
               <span className="stat-value">{totalVotes}</span>
             </div>
             <div className="stat">
@@ -149,7 +149,7 @@ export function AdminDashboard() {
           </div>
 
           <div className="sidebar-panel votes-panel">
-            <h3>Vote Distribution</h3>
+            <h3>Distribution des Votes</h3>
             {currentQuestion?.answers?.map((answer) => (
               <div key={answer.id} className="vote-distribution">
                 <span className="vote-label">
@@ -178,7 +178,7 @@ export function AdminDashboard() {
         <main className="admin-main">
           {/* Phase Controls */}
           <section className="control-section">
-            <h2>🎮 Phase Controls</h2>
+            <h2>🎮 Contrôles de Phase de jeu</h2>
             <div className="button-grid">
               {state.phase === 'idle' && (
                 <button
@@ -188,7 +188,7 @@ export function AdminDashboard() {
                     gameFlow.startGame(questionsData)
                   }}
                 >
-                  Start Game
+                  Démarrer le Jeu
                 </button>
               )}
 
@@ -200,7 +200,7 @@ export function AdminDashboard() {
                     gameFlow.startVoting()
                   }}
                 >
-                  Start Voting
+                  Commencer à Voter
                 </button>
               )}
 
@@ -210,13 +210,13 @@ export function AdminDashboard() {
                     className="btn btn-secondary btn-lg"
                     onClick={() => gameFlow.stopVoting()}
                   >
-                    Stop Voting
+                    Arrêter le Vote
                   </button>
                   <button
                     className="btn btn-secondary"
                     onClick={() => gameFlow.startVoting()}
                   >
-                    Restart Voting (Reset Timer)
+                    Redémarrer le Vote (Réinitialiser)
                   </button>
                 </>
               )}
@@ -236,13 +236,13 @@ export function AdminDashboard() {
                       }, 800)
                     }}
                   >
-                    Reveal Answer
+                    Révéler la Réponse
                   </button>
                   <button
                     className="btn btn-secondary"
                     onClick={() => gameFlow.startVoting()}
                   >
-                    Back to Voting
+                    Retour au Vote
                   </button>
                 </>
               )}
@@ -254,13 +254,13 @@ export function AdminDashboard() {
                     onClick={() => gameFlow.advanceQuestion()}
                     disabled={state.currentQuestionIndex >= 9}
                   >
-                    Next Question
+                    Question Suivante
                   </button>
                   <button
                     className="btn btn-secondary"
                     onClick={() => gameFlow.resetGame()}
                   >
-                    Reset to Question Selection
+                    Réinitialiser le Jeu
                   </button>
                 </>
               )}
@@ -269,16 +269,16 @@ export function AdminDashboard() {
 
           {/* Joker Controls */}
           <section className="control-section">
-            <h2>🃏 Joker Controls</h2>
+            <h2>🃏 Jokers</h2>
             <div className="joker-grid">
               <button
                 className={`joker-btn joker-save ${!isJokerAvailable('2') ? 'used' : ''}`}
                 onClick={() => handleJokerTrigger('2')}
                 disabled={!isJokerAvailable('2') || state.phase !== 'jokers'}
-                title="Save 5,000 crystals to bank"
+                title="Sauvegarder 5 000 cristaux à la banque"
               >
                 <span className="joker-icon">💾</span>
-                <span className="joker-name">Save</span>
+                <span className="joker-name">5K épargnés</span>
                 <span className="joker-cost">€2</span>
               </button>
 
@@ -286,10 +286,10 @@ export function AdminDashboard() {
                 className={`joker-btn joker-eliminate ${!isJokerAvailable('5') ? 'used' : ''}`}
                 onClick={() => handleJokerTrigger('5')}
                 disabled={!isJokerAvailable('5') || state.phase !== 'jokers'}
-                title="Eliminate one wrong answer"
+                title="Éliminer une mauvaise réponse"
               >
                 <span className="joker-icon">✕</span>
-                <span className="joker-name">Eliminate</span>
+                <span className="joker-name">Éliminer</span>
                 <span className="joker-cost">€5</span>
               </button>
 
@@ -297,10 +297,10 @@ export function AdminDashboard() {
                 className={`joker-btn joker-revote ${!isJokerAvailable('10') ? 'used' : ''}`}
                 onClick={() => handleJokerTrigger('10')}
                 disabled={!isJokerAvailable('10') || state.phase !== 'jokers'}
-                title="Reset votes, reopen voting with 45 seconds"
+                title="Réinitialiser les votes, rouvrir le scrutin avec 45 secondes"
               >
                 <span className="joker-icon">🔄</span>
-                <span className="joker-name">Re-Vote</span>
+                <span className="joker-name">Revoter</span>
                 <span className="joker-cost">€10</span>
               </button>
 
@@ -318,7 +318,7 @@ export function AdminDashboard() {
                 className={`joker-btn joker-skip ${!isJokerAvailable('50') ? 'used' : ''}`}
                 onClick={() => handleJokerTrigger('50')}
                 disabled={!isJokerAvailable('50') || state.phase !== 'jokers'}
-                title="Skip to next question, keep full bank"
+                title="Sauter à la question suivante, conserver la banque complète"
               >
                 <span className="joker-icon">⏭️</span>
                 <span className="joker-name">Skip</span>
@@ -329,22 +329,22 @@ export function AdminDashboard() {
 
           {/* Manual Controls */}
           <section className="control-section">
-            <h2>⚙️ Manual Controls</h2>
+            <h2>⚙️ Contrôles Manuels</h2>
 
             {/* Donation Input */}
             <div className="manual-control-group">
-              <h3>Add Donation</h3>
+              <h3>Ajouter un Don</h3>
               <div className="input-group">
                 <input
                   type="number"
                   min="1"
                   value={donationInput}
                   onChange={(e) => setDonationInput(e.target.value)}
-                  placeholder="Amount in dollars"
+                  placeholder="Montant en euros"
                   className="input"
                 />
                 <button className="btn btn-primary" onClick={handleAddDonation}>
-                  Add Donation
+                  Ajouter
                 </button>
               </div>
             </div>
@@ -352,7 +352,7 @@ export function AdminDashboard() {
             {/* Manual Vote Injection */}
             {state.phase === 'voting' && (
               <div className="manual-control-group">
-                <h3>Test Vote Injection</h3>
+                <h3>Test d'Injection de Votes ou pour tricher</h3>
                 <div className="input-group">
                   <input
                     type="number"
@@ -380,7 +380,7 @@ export function AdminDashboard() {
 
             {/* Emergency Reset */}
             <div className="manual-control-group emergency">
-              <h3>Emergency Controls</h3>
+              <h3>BOUTON D'URGENCE</h3>
               <button
                 className="btn btn-danger"
                 onClick={() => {
@@ -389,7 +389,7 @@ export function AdminDashboard() {
                   }
                 }}
               >
-                🔴 Reset Entire Game
+                🔴 Reset TOUT LE JEU
               </button>
             </div>
           </section>
@@ -400,8 +400,8 @@ export function AdminDashboard() {
       {eliminateModalOpen && (
         <div className="modal-overlay" onClick={() => setEliminateModalOpen(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h2>€5 Eliminate - Choose Answer to Eliminate</h2>
-            <p className="modal-subtitle">Select a wrong answer to eliminate from the board</p>
+            <h2>€5 Éliminer - Choisir une Réponse à Éliminer</h2>
+            <p className="modal-subtitle">Sélectionnez une mauvaise réponse à éliminer du tableau</p>
             <div className="modal-buttons">
               {currentQuestion?.answers?.map((answer) => (
                 <button
@@ -414,10 +414,10 @@ export function AdminDashboard() {
                   }
                   title={
                     answer.id === currentQuestion.correctAnswerId
-                      ? 'Cannot eliminate correct answer'
+                      ? 'Impossible d\'éliminer la bonne réponse'
                       : state.eliminatedAnswers.includes(answer.id)
-                        ? 'Already eliminated'
-                        : 'Click to eliminate'
+                        ? 'Déjà éliminé'
+                        : 'Cliquez pour éliminer'
                   }
                 >
                   <span className="answer-label">
@@ -431,7 +431,7 @@ export function AdminDashboard() {
               className="btn btn-secondary"
               onClick={() => setEliminateModalOpen(false)}
             >
-              Cancel
+              Annuler
             </button>
           </div>
         </div>
@@ -441,20 +441,20 @@ export function AdminDashboard() {
       {skipModalOpen && (
         <div className="modal-overlay" onClick={() => setSkipModalOpen(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h2>€50 Skip Question</h2>
-            <p className="modal-subtitle">Skip to next question?</p>
+            <h2>€50 Sauter la Question</h2>
+            <p className="modal-subtitle">Aller à la question suivante ?</p>
             <p className="modal-detail">
-              Bank all crystals: <strong>💎 {state.crystalBank.toLocaleString()}</strong>
+              Bancaires tous les cristaux: <strong>💎 {state.crystalBank.toLocaleString()}</strong>
             </p>
             <div className="modal-buttons">
               <button className="btn btn-primary btn-lg" onClick={handleConfirmSkip}>
-                ✓ Confirm Skip
+                ✓ Confirmer le Skip
               </button>
               <button
                 className="btn btn-secondary btn-lg"
                 onClick={() => setSkipModalOpen(false)}
               >
-                ✕ Cancel
+                ✕ Annuler
               </button>
             </div>
           </div>
