@@ -21,8 +21,7 @@ export function LoginPage() {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h1>💎 Money Drop</h1>
-        <p className="login-subtitle">Authentification requise</p>
+        <h1>Arma des Drop</h1>
         
         <form onSubmit={handleSubmit}>
           <div className="input-group">
@@ -30,7 +29,7 @@ export function LoginPage() {
               type="password"
               value={inputPassword}
               onChange={(e) => setInputPassword(e.target.value)}
-              placeholder="Entrez le mot de passe"
+              placeholder="Hehehe"
               className="input"
               autoFocus
             />
@@ -39,11 +38,9 @@ export function LoginPage() {
           {error && <div className="error-message">{error}</div>}
           
           <button type="submit" className="btn btn-primary btn-lg">
-            Accédez
+            Accéder
           </button>
         </form>
-        
-        <p className="login-hint">Entrez votre mot de passe pour continuer</p>
       </div>
     </div>
   )
