@@ -42,7 +42,7 @@
   z-index: 10;
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: $spacing-xl;
 
@@ -57,7 +57,7 @@
 
 .trap-grid {
   display: grid;
-  gap: $spacing-2xl;
+  gap: $spacing-xl;
   width: 100%;
   max-width: 1200px;
   height: auto;
@@ -71,14 +71,12 @@
     gap: $spacing-lg;
   }
 
-  // Normal 2x2 grid for questions 1-9
+  // Normal 1x4 grid for questions 1-9
   &.trap-grid--normal {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     @include respond-to('sm') {
       grid-template-columns: 1fr;
-      grid-template-rows: auto;
     }
   }
 
