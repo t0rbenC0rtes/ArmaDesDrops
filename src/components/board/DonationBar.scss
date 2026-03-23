@@ -1,0 +1,83 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.donation-bar-container {
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100vh;
+	width: 80px;
+	display: flex;
+	flex-direction: column;
+	background: linear-gradient(
+		180deg,
+		rgba(0, 0, 0, 0.8),
+		rgba(20, 10, 50, 0.8)
+	);
+	border-right: 2px solid $color-panel-bg;
+	z-index: 15;
+
+	@include respond-to("md") {
+		width: 60px;
+	}
+
+	@include respond-to("sm") {
+		width: 50px;
+	}
+}
+
+.donation-bar {
+	flex: 1;
+	display: flex;
+	padding: $spacing-lg;
+	gap: $spacing-sm;
+	position: relative;
+}
+
+.bar-track {
+	flex: 1;
+	background: rgba(0, 0, 0, 0.5);
+	border: 1px solid $color-crystal-secondary;
+	border-radius: 4px;
+	overflow: hidden;
+	position: relative;
+	min-width: 30px;
+}
+
+.bar-fill {
+	width: 100%;
+	background: linear-gradient(
+		180deg,
+		$color-crystal-secondary,
+		$color-border
+	);
+	transition: height 0.5s ease-out;
+	box-shadow: 0 0 10px rgba(200, 150, 100, 0.5);
+	position: absolute;
+	bottom: 0;
+}
+
+.step-markers {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	gap: 0;
+	position: absolute;
+	right: -35px;
+	top: 0;
+	height: 100%;
+	padding: $spacing-lg 0;
+	pointer-events: none;
+}
+
+.step-marker {
+	font-size: 1.65rem;
+	color: $color-text-secondary;
+	white-space: nowrap;
+	font-weight: 600;
+	transition: color 0.3s ease;
+
+	&.active {
+		color: $color-text-secondary;
+	}
+}

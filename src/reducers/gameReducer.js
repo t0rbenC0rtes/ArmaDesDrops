@@ -198,24 +198,8 @@ const gameReducer = (state, action) => {
       const answerId = action.payload
       const newEliminatedAnswers = [...state.eliminatedAnswers, answerId]
 
-      // Redistribute crystals from eliminated answer to remaining answers
-      const eliminatedCrystals = state.crystalDistribution[answerId] || 0
+      // Simply set eliminated answer crystals to 0 (crystals are lost, not redistributed)
       const newDistribution = { ...state.crystalDistribution, [answerId]: 0 }
-
-      if (eliminatedCrystals > 0) {
-        const activeAnswers = [1, 2, 3, 4].filter(
-          (id) => !newEliminatedAnswers.includes(id)
-        )
-        if (activeAnswers.length > 0) {
-          const crysPerAnswer = Math.floor(eliminatedCrystals / activeAnswers.length)
-          const remainder = eliminatedCrystals % activeAnswers.length
-
-          activeAnswers.forEach((id, idx) => {
-            newDistribution[id] += crysPerAnswer
-            if (idx === 0) newDistribution[id] += remainder
-          })
-        }
-      }
 
       return {
         ...state,

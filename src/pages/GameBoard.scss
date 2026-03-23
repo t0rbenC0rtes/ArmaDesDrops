@@ -10,10 +10,19 @@
   background: $color-dark-bg;
   display: flex;
   flex-direction: column;
+  margin-left: 80px;
+
+  @include respond-to('md') {
+    margin-left: 60px;
+  }
+
+  @include respond-to('sm') {
+    margin-left: 50px;
+  }
 
   // OBS overlay - ensure exact dimensions
   @media (min-width: $obs-width) {
-    width: $obs-width;
+    width: calc($obs-width - 80px);
     height: $obs-height;
     overflow: hidden;
   }
@@ -35,6 +44,17 @@
   position: relative;
   z-index: 10;
   flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: $spacing-lg;
+}
+
+.top-right-widgets {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
 }
 
 .board-center {

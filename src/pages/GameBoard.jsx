@@ -5,6 +5,8 @@ import { useTwitchChat } from '../hooks/useTwitchChat'
 import { QuestionDisplay } from '../components/board/QuestionDisplay'
 import { Trap } from '../components/board/Trap'
 import { CrystalCounter } from '../components/board/CrystalCounter'
+import { VoteDistribution } from '../components/board/VoteDistribution'
+import { DonationBar } from '../components/board/DonationBar'
 import { Timer } from '../components/board/Timer'
 import './GameBoard.scss'
 import questionsData from '../data/questions.json'
@@ -74,6 +76,9 @@ export function GameBoard() {
       {/* Background */}
       <div className="game-board-bg" />
 
+      {/* Donation Bar - Left Side */}
+      <DonationBar donationTotal={state.donationTotal} />
+
       {/* Top Section */}
       <div className="board-top">
         <QuestionDisplay
@@ -81,7 +86,12 @@ export function GameBoard() {
           questionNumber={state.currentQuestionIndex + 1}
           totalQuestions={10}
         />
-        <CrystalCounter crystalBank={state.crystalBank} />
+        <div className="top-right-widgets">
+          <CrystalCounter crystalBank={state.crystalBank} />
+          {state.phase === 'voting' && (
+            <VoteDistribution currentQuestion={currentQuestion} state={state} />
+          )}
+        </div>
       </div>
 
       {/* Main Content */}

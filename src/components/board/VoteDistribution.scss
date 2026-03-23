@@ -1,0 +1,76 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.vote-distribution-widget {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  border-radius: 4px;
+  padding: $spacing-lg;
+  min-width: 280px;
+  margin-top: $spacing-md;
+
+  h3 {
+    margin: 0 0 $spacing-md 0;
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}
+
+.vote-distribution {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+  padding-bottom: $spacing-md;
+  border-bottom: 1px solid rgba(0, 200, 255, 0.1);
+
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.vote-label {
+  font-weight: bold;
+  color: $color-crystal-primary;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.vote-bar {
+  flex: 1;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 200, 255, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.vote-fill {
+  height: 100%;
+  background: linear-gradient(90deg, $color-crystal-primary 0%, lighten($color-crystal-primary, 20%) 100%);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+}
+
+.vote-count {
+  min-width: 120px;
+  text-align: right;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-family: 'Courier New', monospace;
+}
+
+.crystal-icon-inline {
+  width: 0.9rem;
+  height: 0.9rem;
+  object-fit: contain;
+  display: inline;
+  vertical-align: middle;
+  margin: 0 0.2rem;
+}

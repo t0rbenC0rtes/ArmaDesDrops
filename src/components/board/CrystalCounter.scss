@@ -2,9 +2,7 @@
 @import '../../styles/mixins';
 
 .crystal-counter {
-  position: fixed;
-  top: $spacing-lg;
-  right: $spacing-lg;
+  position: relative;
   z-index: 20;
   @include sc2-panel($color-crystal-primary);
   padding: $spacing-lg;
@@ -16,9 +14,7 @@
   }
 
   @include respond-to('md') {
-    position: absolute;
-    top: $spacing-md;
-    right: $spacing-md;
+    position: relative;
     min-width: 200px;
     padding: $spacing-md;
   }
