@@ -17,6 +17,7 @@
   text-align: center;
   border-radius: $border-radius-lg;
   animation: slideDown 0.4s ease-out;
+  margin-right:-17rem;
 
   @include respond-to('md') {
     padding: $spacing-xl;
