@@ -164,7 +164,7 @@ export function AdminDashboard() {
       {/* Header */}
       <header className="admin-header">
         <div className="header-content">
-          <h1>💎 Panneau de Contrôle Admin</h1>
+          <h1><img src="/mineralIcon.png" alt="crystals" className="crystal-icon-inline" /> Panneau de Contrôle Admin</h1>
           <span className="channel-name">Chaîne: laemso</span>
         </div>
       </header>
@@ -202,11 +202,11 @@ export function AdminDashboard() {
             </div>
             <div className="stat">
               <span className="stat-label">Banque de Cristaux:</span>
-              <span className="stat-value">💎 {state.crystalBank.toLocaleString()}</span>
+              <span className="stat-value"><img src="/mineralIcon.png" alt="crystals" className="crystal-icon-inline" /> {state.crystalBank.toLocaleString()}</span>
             </div>
             <div className="stat">
               <span className="stat-label">Cristaux Sauvegardés:</span>
-              <span className="stat-value">💎 {state.savedCrystals.toLocaleString()}</span>
+              <span className="stat-value"><img src="/mineralIcon.png" alt="crystals" className="crystal-icon-inline" /> {state.savedCrystals.toLocaleString()}</span>
             </div>
             <div className="stat">
               <span className="stat-label">Votes Totaux:</span>
@@ -237,7 +237,7 @@ export function AdminDashboard() {
                   />
                 </div>
                 <span className="vote-count">
-                  {state.votes[answer.id]?.length || 0} ({state.crystalDistribution[answer.id] || 0}💎)
+                  {state.votes[answer.id]?.length || 0} ({state.crystalDistribution[answer.id] || 0}<img src="/mineralIcon.png" alt="crystals" className="crystal-icon-inline" />)
                 </span>
               </div>
             ))}
@@ -533,7 +533,7 @@ export function AdminDashboard() {
             <h2>€50 Sauter la Question</h2>
             <p className="modal-subtitle">Aller à la question suivante ?</p>
             <p className="modal-detail">
-              Bancaires tous les cristaux: <strong>💎 {state.crystalBank.toLocaleString()}</strong>
+              Bancaires tous les cristaux: <strong><img src="/mineralIcon.png" alt="crystals" className="crystal-icon-inline" /> {state.crystalBank.toLocaleString()}</strong>
             </p>
             <div className="modal-buttons">
               <button className="btn btn-primary btn-lg" onClick={handleConfirmSkip}>

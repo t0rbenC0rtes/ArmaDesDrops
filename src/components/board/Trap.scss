@@ -135,8 +135,19 @@
 }
 
 .crystal-icon {
-  font-size: $font-size-2xl;
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
   animation: crystalPulse 1.5s ease-in-out infinite;
+}
+
+.crystal-icon-inline {
+  width: 0.9rem;
+  height: 0.9rem;
+  object-fit: contain;
+  display: inline;
+  vertical-align: middle;
+  margin: 0 0.2rem;
 }
 
 .crystal-amount {

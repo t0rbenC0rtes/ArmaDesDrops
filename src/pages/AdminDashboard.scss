@@ -483,6 +483,16 @@ $color-accent-green: $color-success;
   }
 }
 
+// Crystal icon styling for inline images
+.crystal-icon-inline {
+  width: 1.2rem;
+  height: 1.2rem;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.25rem;
+}
+
 // Responsive
 @media (max-width: 1400px) {
   .admin-container {

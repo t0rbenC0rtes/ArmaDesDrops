@@ -44,14 +44,17 @@ export function Trap({
           {voteCount > 0 && (
             <span className="vote-count">
               votes: {voteCount}
-              {crystalPerVote > 0 && ` (${votesCrystalValue.toLocaleString()}💎)`}
+              {crystalPerVote > 0 && (
+                <img src="/mineralIcon.png" alt="crystals" className="crystal-icon-inline" />
+              )}
+              {crystalPerVote > 0 && ` (${votesCrystalValue.toLocaleString()})`}
             </span>
           )}
         </div>
 
         {crystalAmount > 0 && !isEliminated && (
           <div className="trap-crystals">
-            <div className="crystal-icon">💎</div>
+            <img src="/mineralIcon.png" alt="crystals" className="crystal-icon" />
             <span className="crystal-amount">{crystalAmount.toLocaleString()}</span>
           </div>
         )}

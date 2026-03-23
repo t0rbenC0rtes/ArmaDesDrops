@@ -44,7 +44,7 @@ export function CrystalCounter({ crystalBank, previousBank = 0 }) {
   return (
     <div className={`crystal-counter ${isIncreasing ? 'increasing' : ''}`}>
       <div className="counter-content">
-        <div className="crystal-icon-large">💎</div>
+        <img src="/mineralIcon.png" alt="crystals" className="crystal-icon-large" />
         <div className="counter-display">
           <span className="crystal-value">{crystalBank.toLocaleString()}</span>
           <span className="crystal-label">CRYSTALS</span>
