@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useGame } from '../context/GameContext'
 import { useGameFlow } from '../hooks/useGameFlow'
 import questionsData from '../data/questions.json'
@@ -12,6 +12,8 @@ export function AdminDashboard() {
   const [eliminateModalOpen, setEliminateModalOpen] = useState(false)
   const [skipModalOpen, setSkipModalOpen] = useState(false)
   const [crystalOverrideInput, setCrystalOverrideInput] = useState('')
+  const countdownAudioRef = useRef(null)
+  const revealAudioRef = useRef(null)
 
   const currentQuestion = questionsData[state.currentQuestionIndex] || questionsData[0]
 
@@ -98,6 +100,40 @@ export function AdminDashboard() {
     }
   }
 
+  // Play countdown music when voting starts
+  const handleStartVoting = () => {
+    console.log('[Audio] Playing countdown music')
+    if (countdownAudioRef.current) {
+      countdownAudioRef.current.currentTime = 0
+      countdownAudioRef.current.play().catch((err) => {
+        console.warn('[Audio] Could not play countdown music:', err.message)
+      })
+    }
+    gameFlow.startVoting()
+  }
+
+  // Play reveal music when revealing answer, then trigger reveal after 25 seconds
+  const handleRevealWithMusic = () => {
+    console.log('[Audio] Playing reveal music')
+    if (revealAudioRef.current) {
+      revealAudioRef.current.currentTime = 0
+      revealAudioRef.current.play().catch((err) => {
+        console.warn('[Audio] Could not play reveal music:', err.message)
+      })
+    }
+    // Delay reveal by 25 seconds to match reveal music length
+    setTimeout(() => {
+      gameFlow.triggerReveal()
+      // Auto-finalize after animation completes
+      setTimeout(() => {
+        dispatch({
+          type: 'FINALIZE_CRYSTALS',
+          payload: { correctAnswerId: currentQuestion.correctAnswerId },
+        })
+      }, 800)
+    }, 25000)
+  }
+
   // Manual vote injection for testing
   const handleManualVote = (answerId) => {
     for (let i = 0; i < manualVoteCount; i++) {
@@ -113,6 +149,18 @@ export function AdminDashboard() {
 
   return (
     <div className="admin-dashboard">
+      {/* Hidden audio elements for game music - played from admin panel */}
+      <audio
+        ref={countdownAudioRef}
+        src="/CountdownMusic.wav"
+        preload="auto"
+      />
+      <audio
+        ref={revealAudioRef}
+        src="/RevealMusic.wav"
+        preload="auto"
+      />
+
       {/* Header */}
       <header className="admin-header">
         <div className="header-content">
@@ -219,7 +267,7 @@ export function AdminDashboard() {
                   className="btn btn-primary btn-lg"
                   onClick={() => {
                     console.log('[AdminDashboard] Start Voting clicked')
-                    gameFlow.startVoting()
+                    handleStartVoting()
                   }}
                 >
                   Commencer à Voter
@@ -248,14 +296,7 @@ export function AdminDashboard() {
                   <button
                     className="btn btn-primary btn-lg"
                     onClick={() => {
-                      gameFlow.triggerReveal()
-                      // Auto-finalize after a short delay for animation
-                      setTimeout(() => {
-                        dispatch({
-                          type: 'FINALIZE_CRYSTALS',
-                          payload: { correctAnswerId: currentQuestion.correctAnswerId },
-                        })
-                      }, 800)
+                      handleRevealWithMusic()
                     }}
                   >
                     Révéler la Réponse
