@@ -310,6 +310,13 @@ const gameReducer = (state, action) => {
       }
     }
 
+    case 'SET_DONATION_TOTAL': {
+      return {
+        ...state,
+        donationTotal: action.payload,
+      }
+    }
+
     default:
       return state
   }

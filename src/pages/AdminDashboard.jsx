@@ -12,6 +12,7 @@ export function AdminDashboard() {
   const [eliminateModalOpen, setEliminateModalOpen] = useState(false)
   const [skipModalOpen, setSkipModalOpen] = useState(false)
   const [crystalOverrideInput, setCrystalOverrideInput] = useState('')
+  const [donationOverrideInput, setDonationOverrideInput] = useState('')
   const countdownAudioRef = useRef(null)
   const revealAudioRef = useRef(null)
 
@@ -97,6 +98,19 @@ export function AdminDashboard() {
       })
       setCrystalOverrideInput('')
       console.log(`[EMERGENCY] Crystal bank overridden to ${amount}`)
+    }
+  }
+
+  // Emergency donation override
+  const handleOverrideDonations = () => {
+    const amount = parseInt(donationOverrideInput)
+    if (!isNaN(amount) && amount >= 0) {
+      dispatch({
+        type: 'SET_DONATION_TOTAL',
+        payload: amount,
+      })
+      setDonationOverrideInput('')
+      console.log(`[EMERGENCY] Donation total overridden to ${amount}`)
     }
   }
 
@@ -478,6 +492,19 @@ export function AdminDashboard() {
                 />
                 <button className="btn btn-warning" onClick={handleOverrideCrystals}>
                   Forcer les Cristaux
+                </button>
+              </div>
+              <div className="input-group">
+                <input
+                  type="number"
+                  min="0"
+                  value={donationOverrideInput}
+                  onChange={(e) => setDonationOverrideInput(e.target.value)}
+                  placeholder="Montant de donations"
+                  className="input"
+                />
+                <button className="btn btn-warning" onClick={handleOverrideDonations}>
+                  Forcer les Donations
                 </button>
               </div>
             </div>
