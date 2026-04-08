@@ -5,6 +5,15 @@ export function DonationBar({ donationTotal }) {
   // Simple 5-step progression (descending order: 50 at top, 2 at bottom)
   const thresholds = [50, 25, 10, 5, 2]
   
+  // Map thresholds to their corresponding joker emojis
+  const jokerEmojis = {
+    2: '💾',
+    5: '✕',
+    10: '🔄',
+    25: '📞',
+    50: '⏭️',
+  }
+  
   // Calculate which step we're at (0-5) by counting how many thresholds we've met
   const getCurrentStep = () => {
     let step = 0
@@ -37,7 +46,7 @@ export function DonationBar({ donationTotal }) {
               className={`step-marker ${currentStep > idx ? 'active' : ''}`}
               title={`$${threshold}`}
             >
-              {threshold}€
+              {threshold}€ {jokerEmojis[threshold]}
             </div>
           ))}
         </div>

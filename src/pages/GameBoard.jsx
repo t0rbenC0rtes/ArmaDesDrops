@@ -88,6 +88,10 @@ export function GameBoard() {
         />
         <div className="top-right-widgets">
           <CrystalCounter crystalBank={state.crystalBank} />
+          <div className="stat">
+            <span className="stat-label">Dons:</span>
+            <span className="stat-value">💰 ${state.donationTotal.toLocaleString()}</span>
+          </div>
           {state.phase === 'voting' && (
             <VoteDistribution currentQuestion={currentQuestion} state={state} />
           )}

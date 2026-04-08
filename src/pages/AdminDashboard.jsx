@@ -168,11 +168,13 @@ export function AdminDashboard() {
         ref={countdownAudioRef}
         src="/CountdownMusic.wav"
         preload="auto"
+        volume={0.3}
       />
       <audio
         ref={revealAudioRef}
         src="/RevealMusic.wav"
         preload="auto"
+        volume={0.3}
       />
 
       {/* Header */}
@@ -227,7 +229,7 @@ export function AdminDashboard() {
               <span className="stat-value">{totalVotes}</span>
             </div>
             <div className="stat">
-              <span className="stat-label">Donations:</span>
+              <span className="stat-label">Dons:</span>
               <span className="stat-value">💰 ${state.donationTotal.toLocaleString()}</span>
             </div>
           </div>
@@ -386,8 +388,8 @@ export function AdminDashboard() {
                 disabled={true}
                 title="TBD - Placeholder"
               >
-                <span className="joker-icon">❓</span>
-                <span className="joker-name">TBD</span>
+                <span className="joker-icon">📞</span>
+                <span className="joker-name">Appel</span>
                 <span className="joker-cost">€25</span>
               </button>
 
