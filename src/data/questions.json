@@ -1,110 +1,110 @@
 [
-  {
-    "id": 1,
-    "question": "Quelle race a été introduite en première dans le StarCraft original ?",
-    "answers": [
-      { "id": 1, "text": "Protoss" },
-      { "id": 2, "text": "Terran" },
-      { "id": 3, "text": "Zerg" },
-      { "id": 4, "text": "Xel'Naga" }
-    ],
-    "correctAnswerId": 2
-  },
-  {
-    "id": 2,
-    "question": "Quelle est la capitale du Dominion Terran dans StarCraft II ?",
-    "answers": [
-      { "id": 1, "text": "Augustgrad" },
-      { "id": 2, "text": "Korhal City" },
-      { "id": 3, "text": "New Tarsonis" },
-      { "id": 4, "text": "Raynor's Hope" }
-    ],
-    "correctAnswerId": 1
-  },
-  {
-    "id": 3,
-    "question": "Quelle extension de StarCraft II présente l'unité Swarm Host ?",
-    "answers": [
-      { "id": 1, "text": "Wings of Liberty" },
-      { "id": 2, "text": "Heart of the Swarm" },
-      { "id": 3, "text": "Legacy of the Void" },
-      { "id": 4, "text": "Starcraft: Remastered" }
-    ],
-    "correctAnswerId": 2
-  },
-  {
-    "id": 4,
-    "question": "Quelle est la ressource principale utilisée pour construire des structures dans StarCraft ?",
-    "answers": [
-      { "id": 1, "text": "Gaz uniquement" },
-      { "id": 2, "text": "Minéraux uniquement" },
-      { "id": 3, "text": "Minéraux et Gaz" },
-      { "id": 4, "text": "Fragments de cristal" }
-    ],
-    "correctAnswerId": 3
-  },
-  {
-    "id": 5,
-    "question": "Quelle unité héros ne peut être entraînée que par la faction Terran ?",
-    "answers": [
-      { "id": 1, "text": "Raynor's Raider" },
-      { "id": 2, "text": "Zeratul" },
-      { "id": 3, "text": "Jim Raynor" },
-      { "id": 4, "text": "Artanis" }
-    ],
-    "correctAnswerId": 3
-  },
-  {
-    "id": 6,
-    "question": "Quel est le nom de la structure ruche principale des Zerg ?",
-    "answers": [
-      { "id": 1, "text": "Nexus" },
-      { "id": 2, "text": "Hive Cluster" },
-      { "id": 3, "text": "Barracks" },
-      { "id": 4, "text": "Command Center" }
-    ],
-    "correctAnswerId": 2
-  },
-  {
-    "id": 7,
-    "question": "Quel bâtiment Protoss est requis pour rechercher la plupart des mises à niveau d'unités ?",
-    "answers": [
-      { "id": 1, "text": "Cybernetics Core" },
-      { "id": 2, "text": "Fleet Beacon" },
-      { "id": 3, "text": "Twilight Council" },
-      { "id": 4, "text": "Forge" }
-    ],
-    "correctAnswerId": 1
-  },
-  {
-    "id": 8,
-    "question": "Quelle est la vitesse de marche de base d'une unité Marine ?",
-    "answers": [
-      { "id": 1, "text": "1.5" },
-      { "id": 2, "text": "2.36" },
-      { "id": 3, "text": "3.15" },
-      { "id": 4, "text": "4.0" }
-    ],
-    "correctAnswerId": 2
-  },
-  {
-    "id": 9,
-    "question": "Combien de supplies sont nécessaires pour un Battlecruiser dans Legacy of the Void ?",
-    "answers": [
-      { "id": 1, "text": "6 supplies" },
-      { "id": 2, "text": "8 supplies" },
-      { "id": 3, "text": "10 supplies" },
-      { "id": 4, "text": "12 supplies" }
-    ],
-    "correctAnswerId": 2
-  },
-  {
-    "id": 10,
-    "question": "En quelle année le StarCraft original a-t-il été lancé ?",
-    "answers": [
-      { "id": 1, "text": "1996" },
-      { "id": 2, "text": "1998" }
-    ],
-    "correctAnswerId": 2
-  }
+	{
+		"id": 1,
+		"question": "Qui tue Tychus dans la dernière cinématique de Wings of liberty ?",
+		"answers": [
+			{ "id": 1, "text": "Sarah Kerrigan" },
+			{ "id": 2, "text": "Jim Raynor" },
+			{ "id": 3, "text": "Tychus se donne la mort" },
+			{ "id": 4, "text": "Arcturus Mengsk" }
+		],
+		"correctAnswerId": 2
+	},
+	{
+		"id": 2,
+		"question": "Quel joueur a obtenu le plus de 2e places en GSL (6 au total) ?",
+		"answers": [
+			{ "id": 1, "text": "Dark (Z)" },
+			{ "id": 2, "text": "MarineKing (T)" },
+			{ "id": 3, "text": "Soo (Z)" },
+			{ "id": 4, "text": "SoS (P)" }
+		],
+		"correctAnswerId": 3
+	},
+	{
+		"id": 3,
+		"question": "Je forme une armée constituée de 2 Ultras, 3 Ravageurs, 2 Roachs, 4 Hydras et 8 Zerglings. Quelle est la valeur de supply ?",
+		"answers": [
+			{ "id": 1, "text": "37" },
+			{ "id": 2, "text": "40" },
+			{ "id": 3, "text": "44" },
+			{ "id": 4, "text": "47" }
+		],
+		"correctAnswerId": 1
+	},
+	{
+		"id": 4,
+		"question": "Quelle unité débloque-t-on dans la mission 'Jardin du Diable' (Devil's Playground) ?",
+		"answers": [
+			{ "id": 1, "text": "Thor" },
+			{ "id": 2, "text": "Hélion" },
+			{ "id": 3, "text": "Reaper" },
+			{ "id": 4, "text": "Ghost" }
+		],
+		"correctAnswerId": 3
+	},
+	{
+		"id": 5,
+		"question": "Quelle unité parmi les suivantes est à la fois biologique et mécanique ?",
+		"answers": [
+			{ "id": 1, "text": "Cocon zerg" },
+			{ "id": 2, "text": "Probe" },
+			{ "id": 3, "text": "Hélion" },
+			{ "id": 4, "text": "V.C.S." }
+		],
+		"correctAnswerId": 4
+	},
+	{
+		"id": 6,
+		"question": "Sachant qu'un cocon de larve Zerg a 200 points de vie, combien le cocon d'un zergling se morphant en baneling en possède-t-il ?",
+		"answers": [
+			{ "id": 1, "text": "Idem (200)" },
+			{ "id": 2, "text": "Deux fois moins (100)" },
+			{ "id": 3, "text": "Quatre fois moins (50)" },
+			{ "id": 4, "text": "Dix fois moins (20)" }
+		],
+		"correctAnswerId": 3
+	},
+	{
+		"id": 7,
+		"question": "Quels mots sont prononés par Kerrigan dans une cinématique de la campagne HOTS lorsqu'elle délivre Jim Raynor ?",
+		"answers": [
+			{ "id": 1, "text": "Do you still believe in me ?" },
+			{ "id": 2, "text": "Do you still trust me ?" },
+			{ "id": 3, "text": "Do you still love me ?" },
+			{ "id": 4, "text": "Do you still have faith in me ?" }
+		],
+		"correctAnswerId": 1
+	},
+	{
+		"id": 8,
+		"question": "Combien de game en 1v1 la joueuse [PAR MINOU]Laemso cumule-t-elle sur ses deux comptes réunis ?",
+		"answers": [
+			{ "id": 1, "text": "Environ 2000" },
+			{ "id": 2, "text": "Environ 6000" },
+			{ "id": 3, "text": "Environ 8000" },
+			{ "id": 4, "text": "Environ 13000" }
+		],
+		"correctAnswerId": 2
+	},
+	{
+		"id": 9,
+		"question": "Qui a remporté la première GSL en 2010",
+		"answers": [
+			{ "id": 1, "text": "'Rain' Seo Yong" },
+			{ "id": 2, "text": "'MarineKing' Jung Hoon" },
+			{ "id": 3, "text": "'Fruit Dealer' Won Gi" },
+			{ "id": 4, "text": "'MC' Min Chul" }
+		],
+		"correctAnswerId": 3
+	},
+	{
+		"id": 10,
+		"question": "Qui sont les compositeurs de la musique de Starcraft II Wings of Liberty",
+		"answers": [
+			{ "id": 1, "text": "Derek Duke, Glenn Stafford, Neal Acreet et Russell Brower." },
+			{ "id": 2, "text": "Andrew Chambers, Brian Kindregan et Chris Metzen." }
+		],
+		"correctAnswerId": 1
+	}
 ]
